@@ -1,6 +1,7 @@
 <html>
     <head>
     	<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, user-scalable=no">
         <!-- <title>Somi's Blog</title> -->
         <title>TEST</title>
         <script src="https://kimsomi0427.github.io/somi/jquery-3.4.1.min.js"></script>
@@ -39,12 +40,22 @@
 						alert("입력해주세요.");
 						return;
 					} else {
-						$("#divImg").append("<div style=\"left: "+$("#xValue").val()+"; top: "+$("#yValue").val()+"; color:red; z-index:999; position: absolute; word-break:break-all; \" title=\""+ $("#inputText").val() +"\">" + "★" + "</div>");
+						$("#divImg").append("<div class=\"divClass\" style=\"left: "+$("#xValue").val()+"; top: "+$("#yValue").val()
+						+"; color:red; z-index:999; position: absolute; word-break:break-all; \" title=\""+ $("#inputText").val() +"\">" + "★" 
+						+ "<span style=\"display: none;\">"+ $("#inputText").val() +"</span></div>");
+						
 						$("#xValue").val("");
 						$("#yValue").val("");
 						$("#inputText").val("");
 						$("#inputDiv").hide();
 					}
+				});
+				
+				$(document).on("click",".divClass",function(){
+					if ($(this).children().is("visible")) {
+						$(this).children().hide();
+					} 
+					
 				});
 				
 				
