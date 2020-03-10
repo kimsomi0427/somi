@@ -4,13 +4,22 @@
         <title>테스트</title>
         <script src="https://kimsomi0427.github.io/somi/jquery-3.4.1.min.js"></script>
         <script>
-			function myFunction(event) {
+			/* function myFunction(event) {
 			  var x = event.touches[0].clientX;
 			  var y = event.touches[0].clientY;
 			  
 			  document.getElementsBtName("map").append("<area shape=\"circle\" coords=\"" + x + "," + y + "," + 1 + "\" target=\"_self\" >");
-			  document.getElementById("demo").innerHTML = document.getElementsBtName("map").html();
-			} 
+			  document.getElementById("demo").innerHTML = document.getElementsBtName("map").html;
+			}  */
+			
+			$(function(){
+				$("#img").bind("touchstart",function(e){
+					var x = e.touches[0].clientX;
+					var y = e.touches[0].clientY;
+					alert("터치" + "x : " + x + ", y : " + y);
+				});
+				
+			});
 			
 		</script>
     </head>
@@ -24,7 +33,7 @@
         
         <input type="text" style="display: none" /> <input type="button" value="확인"/>
         
-        <img ontouchstart="myFunction(event)" src="https://kimsomi0427.github.io/somi/a.jpg" usemap="#map"/> <!-- ontouchstart="myFunction(event)" -->
+        <img id="img" src="https://kimsomi0427.github.io/somi/a.jpg" usemap="#map"/> <!-- ontouchstart="myFunction(event)" -->
         
         <map name="map">
         	
