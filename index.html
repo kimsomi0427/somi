@@ -4,23 +4,65 @@
         <title>테스트</title>
         <script src="https://kimsomi0427.github.io/somi/jquery-3.4.1.min.js"></script>
         <script>
-			/* function myFunction(event) {
-			  var x = event.touches[0].clientX;
-			  var y = event.touches[0].clientY;
-			  
-			  document.getElementsBtName("map").append("<area shape=\"circle\" coords=\"" + x + "," + y + "," + 1 + "\" target=\"_self\" >");
-			  document.getElementById("demo").innerHTML = document.getElementsBtName("map").html;
-			}  */
-			
 			$(function(){
-				$("#img").bind("touchstart",function(e){
-					var x = e.touches[0].clientX;
-					var y = e.touches[0].clientY;
-					alert("터치" + "x : " + x + ", y : " + y);
+				$(document).on("click","#img",function(e){
+					if($("#xValue").val() != "" || $("#yValue").val() != "") {
+						alert("이전 태그를 입력해주세요.");
+					} else {
+						var x = e.offsetX;
+						var y = e.offsetY;
+						
+						$("#inputDiv").show();
+						
+						$("#xValue").val(x);
+						$("#yValue").val(y);
+					}
+					
+				});
+				/* $("#img").on("click",function(e){
+					if($("#xValue").val() != "" || $("#yValue").val() != "") {
+						alert("이전 태그를 입력해주세요.");
+					} else {
+						var x = e.offsetX;
+						var y = e.offsetY;
+						
+						$("#inputDiv").show();
+						
+						$("#xValue").val(x);
+						$("#yValue").val(y);
+					}
+				}); */
+				
+				$("#confirmBtn").on("click", function(){
+					if($.trim($("#inputText").val()) == "") {
+						alert("입력해주세요.");
+						return;
+					} else {
+						$("#divImg").append("<div style=\"left: "+$("#xValue").val()+"; top: "+$("#yValue").val()+"; color:red; z-index:999; position: absolute; word-break:break-all; \" title=\""+ $("#inputText").val() +"\">" + "★" + "</div>");
+						$("#xValue").val("");
+						$("#yValue").val("");
+						$("#inputText").val("");
+						$("#inputDiv").hide();
+					}
 				});
 				
+				
+				$(".inp-img").on("change", function(){
+				    readInputFile(this);
+				});
+
 			});
 			
+			// 등록 이미지 등록 미리보기
+			function readInputFile(input) {
+			    if(input.files && input.files[0]) {
+			        var reader = new FileReader();
+			        reader.onload = function (e) {
+			        	$("#divImg").append("<img id=\"img\" src="+ e.target.result +" style=\"z-index: -10;\">");
+			        }
+			        reader.readAsDataURL(input.files[0]);
+			    }
+			}
 		</script>
     </head>
     <body>
@@ -31,16 +73,21 @@
         <!-- <p ontouchmove="myFunction(event)">ontouchmove</p>
         <p ontouchend="myFunction(event)">ontouchend</p> -->
         
-        <input type="text" style="display: none" /> <input type="button" value="확인"/>
         
-        <img id="img" src="https://kimsomi0427.github.io/somi/a.jpg" usemap="#map"/> <!-- ontouchstart="myFunction(event)" -->
         
-        <map name="map">
-        	
-        </map>
-        <br />
         
-        <p id="demo"></p>
+        <input type="hidden" id="xValue" value="" />
+        <input type="hidden" id="yValue" value= "" />
+        
+        <div id="inputDiv" style="display: none">
+        	<input type="text" id="inputText"  /> <input type="button" id="confirmBtn" value="확인"/>
+        </div>
+        
+        <div id="divImg" style="position: relative; ">
+        	<!-- <img id="img" src="https://kimsomi0427.github.io/somi/a.jpg" style="z-index: -10;"/> --> <!-- ontouchstart="myFunction(event)" -->
+        </div>
+        <input type="file" name="" class="inp-img" accept=".gif, .jpg, .png">
+       
     </body>
 </html> 
 </html>
