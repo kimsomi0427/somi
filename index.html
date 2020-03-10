@@ -1,5 +1,6 @@
 <html>
     <head>
+    	<meta charset="utf-8">
         <!-- <title>Somi's Blog</title> -->
         <title>TEST</title>
         <script src="https://kimsomi0427.github.io/somi/jquery-3.4.1.min.js"></script>
@@ -7,7 +8,7 @@
 			$(function(){
 				$(document).on("click","#img",function(e){
 					if($("#xValue").val() != "" || $("#yValue").val() != "") {
-						alert("ÀÌÀü ÅÂ±×¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+						alert("ì´ì „ íƒœê·¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 					} else {
 						var x = e.offsetX;
 						var y = e.offsetY;
@@ -21,7 +22,7 @@
 				});
 				/* $("#img").on("click",function(e){
 					if($("#xValue").val() != "" || $("#yValue").val() != "") {
-						alert("ÀÌÀü ÅÂ±×¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+						alert("ì´ì „ íƒœê·¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 					} else {
 						var x = e.offsetX;
 						var y = e.offsetY;
@@ -35,10 +36,10 @@
 				
 				$("#confirmBtn").on("click", function(){
 					if($.trim($("#inputText").val()) == "") {
-						alert("ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+						alert("ì…ë ¥í•´ì£¼ì„¸ìš”.");
 						return;
 					} else {
-						$("#divImg").append("<div style=\"left: "+$("#xValue").val()+"; top: "+$("#yValue").val()+"; color:red; z-index:999; position: absolute; word-break:break-all; \" title=\""+ $("#inputText").val() +"\">" + "¡Ú" + "</div>");
+						$("#divImg").append("<div style=\"left: "+$("#xValue").val()+"; top: "+$("#yValue").val()+"; color:red; z-index:999; position: absolute; word-break:break-all; \" title=\""+ $("#inputText").val() +"\">" + "â˜…" + "</div>");
 						$("#xValue").val("");
 						$("#yValue").val("");
 						$("#inputText").val("");
@@ -53,12 +54,12 @@
 
 			});
 			
-			// µî·Ï ÀÌ¹ÌÁö µî·Ï ¹Ì¸®º¸±â
+			// ë“±ë¡ ì´ë¯¸ì§€ ë“±ë¡ ë¯¸ë¦¬ë³´ê¸°
 			function readInputFile(input) {
 			    if(input.files && input.files[0]) {
 			        var reader = new FileReader();
 			        reader.onload = function (e) {
-			        	$("#divImg").append("<img id=\"img\" src="+ e.target.result +" style=\"z-index: -10;\">");
+			        	$("#divImg").append("<img id=\"img\" src="+ e.target.result +" style=\"z-index: -10; max-height: 500px; max-width: 250px;\">");
 			        }
 			        reader.readAsDataURL(input.files[0]);
 			    }
