@@ -7,6 +7,18 @@
         <script src="https://kimsomi0427.github.io/somi/jquery-3.4.1.min.js"></script>
         <script>
 			$(function(){
+				 $("#img").each(function() {
+				        var oImgWidth = $(this).width();
+				        var oImgHeight = $(this).height();
+				        $(this).css({
+				            'max-width':oImgWidth+'px',
+				            'max-height':oImgHeight+'px',
+				            'width':'100%',
+				            'height':'100%'
+				        });
+				    });
+
+
 				$(document).on("click","#img",function(e){
 					if($("#xValue").val() != "" || $("#yValue").val() != "") {
 						alert("이전 태그를 입력해주세요.");
@@ -42,7 +54,7 @@
 					} else {
 						$("#divImg").append("<div class=\"divClass\" style=\"left: "+$("#xValue").val()+"; top: "+$("#yValue").val()
 						+"; color:red; z-index:999; position: absolute; word-break:break-all; \" title=\""+ $("#inputText").val() +"\">" + "★" 
-						+ "<p>"+ $("#inputText").val() +"</p></div>");
+						+ "<span>"+ $("#inputText").val() +"</span></div>");
 						
 						$("#xValue").val("");
 						$("#yValue").val("");
@@ -70,7 +82,7 @@
 			    if(input.files && input.files[0]) {
 			        var reader = new FileReader();
 			        reader.onload = function (e) {
-			        	$("#divImg").append("<img id=\"img\" src="+ e.target.result +" style=\"z-index: -10; \">");
+			        	$("#divImg").append("<img id=\"img\" src="+ e.target.result +" style=\"z-index: -10; \">"); /*  max-height: 1500px; max-width: 1000px;*/
 			        }
 			        reader.readAsDataURL(input.files[0]);
 			    }
