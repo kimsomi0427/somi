@@ -82,7 +82,7 @@
 			    if(input.files && input.files[0]) {
 			        var reader = new FileReader();
 			        reader.onload = function (e) {
-			        	$("#divImg").append("<img id=\"img\" src="+ e.target.result +" style=\"z-index: -10; \">"); /*  max-height: 1500px; max-width: 1000px;*/
+			        	$("#divImg").append("<img id=\"img\" src="+ e.target.result +" style=\"z-index: -10; max-height: 1500px; max-width: 1000px; \">"); /*  max-height: 1500px; max-width: 1000px;*/
 			        }
 			        reader.readAsDataURL(input.files[0]);
 			    }
