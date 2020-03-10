@@ -1,9 +1,25 @@
 <html>
     <head>
-        <title>Somi's Blog</title>
+        <!-- <title>Somi's Blog</title> -->
+        <title>Å×½ºÆ®</title>
+        
+        <script>
+			function myFunction(event) {
+			  var x = event.touches[0].clientX;
+			  var y = event.touches[0].clientY;
+			  document.getElementById("demo").innerHTML = x + ", " + y;
+			}
+		</script>
     </head>
     <body>
+        <!-- Hello World!
         <a href="https://kimsomi0427.github.io/somi/index.html">HOME</a>
-        <a href="https://kimsomi0427.github.io/somi/Study/javaStudy.html">JAVA</a>
+        <a href="https://kimsomi0427.github.io/somi/Study/javaStudy.html">JAVA</a> -->
+        <p ontouchmove="myFunction(event)">ontouchmove</p>
+        
+        <p ontouchend="myFunction(event)">ontouchend</p>
+        <br />
+        <p id="demo"></p>
     </body>
+</html> 
 </html>
